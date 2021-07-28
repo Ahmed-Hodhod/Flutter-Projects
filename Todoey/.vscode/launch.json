@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        
+        {
+            "name": "Flutter (lib\\providerTest.dart)",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib\\providerTest.dart"
+        },
+        {
+            "name": "Flutter (lib\\widgets\\task_tile.dart)",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib\\widgets\\task_tile.dart"
+        }
+    ]
+}
