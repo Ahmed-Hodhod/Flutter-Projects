@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+/// By Ahmed Hodhod (Training on stateful widgets)
 void main() {
   runApp(MaterialApp(
     home: SafeArea(
@@ -37,16 +38,13 @@ class _BallState extends State<Ball> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Expanded(
-        child: TextButton(
-          onPressed: () {
-            setState(() {
-              ballNum = Random().nextInt(5) + 1;
-              print(ballNum);
-            });
-          },
-          child: Image.asset('images/ball$ballNum.png'),
-        ),
+      child: TextButton(
+        onPressed: () {
+          setState(() {
+            ballNum = Random().nextInt(5) + 1;
+          });
+        },
+        child: Image.asset('images/ball$ballNum.png'),
       ),
     );
   }

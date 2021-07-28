@@ -34,7 +34,7 @@ const kTextFieldStyle = InputDecoration(
     borderRadius: BorderRadius.all(
       Radius.circular(10),
     ),
-    borderSide: BorderSide.none, // to get rid of the default underline
+    borderSide: BorderSide.none,
   ),
 );
 

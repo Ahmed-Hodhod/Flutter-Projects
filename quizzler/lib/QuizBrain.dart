@@ -1,8 +1,7 @@
 import 'Question.dart';
 
 class QuizBrain {
-  int _questionNumber = 0;
-// private property
+  int _questionNumber = 0; // private
   List<Question> _questionBank = [
     Question('Is Alex the capital of Egypt ?', false),
     Question('Is your name Ahmed ? ', true),

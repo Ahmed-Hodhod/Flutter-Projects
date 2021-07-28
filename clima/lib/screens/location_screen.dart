@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:clima/utilities/constants.dart';
 import 'package:clima/services/weather.dart';
 
-import 'dart:math';
-
 class LocationScreen extends StatefulWidget {
   LocationScreen(this.weatherData);
   final weatherData;
@@ -71,6 +69,8 @@ class _LocationScreenState extends State<LocationScreen> {
                   ),
                   FlatButton(
                     onPressed: () async {
+                      // Navigating back with a data
+                      // When popping out the 
                       var cityName = await Navigator.push(
                           context, // dont forget this await
                           MaterialPageRoute(builder: (context) {

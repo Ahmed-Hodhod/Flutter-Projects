@@ -39,12 +39,10 @@ class WeatherModel {
     Network network = Network(
         'https://api.openweathermap.org/data/2.5/weather?q=$cityName&mode=json&appid=$apiKey');
     var data = await network.getData();
-
     return data;
   }
 
   Future<dynamic> getLocationWeather() async {
-    // Get the current location weather
     Location loc = Location();
     await loc.getCurrentLocation();
 

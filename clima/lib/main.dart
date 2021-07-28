@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:clima/screens/loading_screen.dart';
 
+/// By Ahmed Hodhod @ 2021   (Training on Flutter)
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -26,16 +28,11 @@ class MyApp extends StatelessWidget {
  *  ** Null Aware Operator ** 
  * EdgeInsets.all(myMargin ?? 30.0)    this means if myMargin has a value, use it 
  * otherwise, use 30 as the value 
- * 
- * 
- * 
- * 
- * 
+
  * ***** Application Programming Interface API ********
  * API that we are gonna use is Openweathermap.org 
  * 
  * cookbook api : fetch data from internet 
- * 
  * 
  * the data returned from an API usually is either in the format of XML or JSON. 
  * ex:with Weather APi, you can get the data in the two formats by deteriming the mode. 
@@ -54,8 +51,7 @@ class MyApp extends StatelessWidget {
  * 
  * 
  * We will use flutter-spinkit package to implement the loading spinner. 
- * 
- * 
+ 
  */
 
 
