@@ -22,78 +22,75 @@ class PayInCreditCardState extends State<PayInCreditCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 8,
+    return Container(
       child: Column(
         children: <Widget>[
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: <Widget>[
-                  CreditCardForm(
-                    formKey: formKey,
-                    obscureCvv: true,
-                    obscureNumber: true,
-                    cardNumber: cardNumber,
-                    cvvCode: cvvCode,
-                    cardHolderName: cardHolderName,
-                    expiryDate: expiryDate,
-                    themeColor: Colors.blue,
-                    cardNumberDecoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Credit Card Number',
-                    ),
-                    cardHolderDecoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Name On Card',
-                    ),
-                    expiryDateDecoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Expired Date',
-                      hintText: 'XX/XX',
-                    ),
-                    cvvCodeDecoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'CVV',
-                      hintText: 'XXX',
-                    ),
-                    onCreditCardModelChange: onCreditCardModelChange,
+          SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                CreditCardForm(
+                  formKey: formKey,
+                  obscureCvv: true,
+                  obscureNumber: true,
+                  cardNumber: cardNumber,
+                  cvvCode: cvvCode,
+                  cardHolderName: cardHolderName,
+                  expiryDate: expiryDate,
+                  themeColor: Colors.blue,
+                  cardNumberDecoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Credit Card Number',
                   ),
-                  Container(
-                    width: double.infinity,
-                    child: DiscountCode(),
-                    margin: EdgeInsets.only(bottom: 15),
-                    decoration: BoxDecoration(),
+                  cardHolderDecoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Name On Card',
                   ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      primary: const Color(0xff1b447b),
+                  expiryDateDecoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Expired Date',
+                    hintText: 'XX/XX',
+                  ),
+                  cvvCodeDecoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'CVV',
+                    hintText: 'XXX',
+                  ),
+                  onCreditCardModelChange: onCreditCardModelChange,
+                ),
+                Container(
+                  width: double.infinity,
+                  child: DiscountCode(),
+                  margin: EdgeInsets.only(bottom: 15),
+                  decoration: BoxDecoration(),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
                     ),
-                    child: Container(
-                      margin: const EdgeInsets.all(8),
-                      child: const Text(
-                        'Validate',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'halter',
-                          fontSize: 14,
-                          package: 'flutter_credit_card',
-                        ),
+                    primary: const Color(0xff1b447b),
+                  ),
+                  child: Container(
+                    margin: const EdgeInsets.all(8),
+                    child: const Text(
+                      'Validate',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'halter',
+                        fontSize: 14,
+                        package: 'flutter_credit_card',
                       ),
                     ),
-                    onPressed: () {
-                      if (formKey.currentState!.validate()) {
-                        print('valid!');
-                      } else {
-                        print('invalid!');
-                      }
-                    },
-                  )
-                ],
-              ),
+                  ),
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      print('valid!');
+                    } else {
+                      print('invalid!');
+                    }
+                  },
+                )
+              ],
             ),
           ),
         ],

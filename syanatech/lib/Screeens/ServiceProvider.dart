@@ -1,146 +1,128 @@
-import 'dart:html';
-
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'package:syanatech/Components/ProfessionsBox.dart';
 import 'package:syanatech/Components/ReusableBox.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:syanatech/Components/ReusableCard.dart';
+import 'package:syanatech/Components/PageBlueprint.dart';
 
-import 'package:syanatech/Components/getCurrentPosition.dart';
+import 'package:syanatech/Components/ReusableImageFrame.dart';
+import 'package:syanatech/Components/ReviewsBox.dart';
+import 'package:syanatech/Screeens/NewOrder.dart';
+import 'package:syanatech/constants.dart';
 
-class ServiceProvider extends StatelessWidget {
+import 'package:syanatech/models/TestmonialManger.dart';
+
+class ServiceProviderContent extends StatelessWidget {
   Future<Position> position = Geolocator.getCurrentPosition();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        shadowColor: Colors.transparent,
-        title: Center(
-          child: Text('Service Provider',
-              style: TextStyle(
-                color: Color(0xFF395991),
-                fontFamily: 'Careem',
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              )),
-        ),
-      ),
-      body: Column(
+    return Container(
+      // it is a must to be put inside sliverFillRemaining
+      height: 950, // Issue by Hodhod : it needs to be dynamic
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Expanded(
-            flex: 3,
-            child:
-                ReusableCard('Ahmed Hodhod', 'Engineer', 'Footballer', 5, 52),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.baseline,
-            textBaseline: TextBaseline.alphabetic,
-            children: [
-              Text(
-                'Distance between you ',
-                style: TextStyle(
-                  color: Color(0xFF2B2B2B),
-                  fontFamily: 'Careem',
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Icon(
-                FontAwesomeIcons.mapMarker,
-                color: Color(0xFF395991),
-                size: 18,
-              ),
-              SizedBox(
-                width: 3,
-              ),
-              Text(
-                '22 meter',
-                style: TextStyle(
-                  color: Color(0xFF395991),
-                  fontFamily: 'Careem',
-                  fontSize: 18,
-                ),
-              ),
-            ],
-          ),
-          Expanded(
-            flex: 3,
+//Start : Worker Info
+          Padding(
+            padding: const EdgeInsets.only(
+              bottom: 30,
+              top: 20,
+            ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Expanded(
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Text(
-                        'Services Provided Pics',
-                        style: TextStyle(
-                          fontFamily: 'Careem',
-                          fontSize: 20,
-                        ),
-                      )
-                    ],
-                  ),
+                ReusableImageFrame(hover: false, url: 'images/ana.jpg'),
+                Text(
+                  'Ahmed Hodhod',
+                  style: kNameTextStyle,
                 ),
-                Expanded(
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Image(
-                          image: AssetImage('images/ana.jpg'),
-                        ),
-                      ),
-                      Expanded(
-                        child: Image(
-                          image: AssetImage('images/ana.jpg'),
-                        ),
-                      ),
-                      Expanded(
-                        child: Image(
-                          image: AssetImage('images/ana.jpg'),
-                        ),
-                      ),
-                      Expanded(
-                        child: Image(
-                          image: AssetImage('images/ana.jpg'),
-                        ),
-                      ),
-                      Expanded(
-                        child: Image(
-                          image: AssetImage('images/ana.jpg'),
-                        ),
-                      ),
-                    ],
-                  ),
+                ProfessionsBox(Professions.Barber, Professions.Carpenter, true),
+                ReviewBox(4, 52, true),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Distance between you ',
+                      style: kNameTextStyle,
+                    ),
+                    Icon(
+                      FontAwesomeIcons.mapMarker,
+                      color: kBlackColor,
+                      size: 18,
+                    ),
+                    SizedBox(
+                      width: 3,
+                    ),
+                    Text(
+                      '22 meter',
+                      style: kRatingTextStyle,
+                    ),
+                  ],
                 ),
               ],
             ),
           ),
+
+// End : Worker Info
+
+// Start : Service Pics
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Row(
+                children: [
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    'Services Provided Pics',
+                    style: kServiceHeadings,
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 20,
+                    ),
+                    ServicePictureFrame(), // List as many pics as you want
+                    ServicePictureFrame(), // List as many pics as you want
+                    ServicePictureFrame(), // List as many pics as you want
+                    // List as many pics as you want
+                    SizedBox(
+                      width: 20,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
           SizedBox(
             height: 7,
           ),
+// End : Service Pics
+
+          // Start : Testmonials
           Expanded(
-            flex: 4,
-            // Reviews bar
             child: Column(
               children: [
                 Row(
+                  textBaseline: TextBaseline.alphabetic,
                   children: [
                     SizedBox(
                       width: 20,
                     ),
                     Text(
                       'Reviews',
-                      style: TextStyle(
-                        fontFamily: 'Careem',
-                        fontSize: 20,
-                      ),
+                      style: kServiceHeadings,
                     ),
                     SizedBox(
                       width: 5,
@@ -163,84 +145,116 @@ class ServiceProvider extends StatelessWidget {
                     ),
                   ],
                 ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: SingleChildScrollView(
+                Expanded(
+                  child: ListView.builder(
+                    itemBuilder: (context, index) {
+                      var reviewr = TestmonialManager().reviwers[index];
+                      return Container(
+                        width: 300,
+                        child: ReusableBox(
+                          url: reviewr.url,
+                          name: reviewr.name,
+                          content: reviewr.content,
+                          rating: reviewr.stars,
+                        ),
+                      );
+                    },
                     scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        ResuableBox(5),
-                        ResuableBox(5),
-                        ResuableBox(5),
-                        ResuableBox(5),
-                        ResuableBox(5),
-                      ],
-                    ),
+                    itemCount: TestmonialManager().reviwers.length,
                   ),
                 ),
               ],
             ),
           ),
-          Expanded(
-            flex: 2,
-            // Service Description
-            child: Container(
-              margin: EdgeInsets.symmetric(
-                horizontal: 20,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Text(
-                    'Service Description',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      color: Color(0xFF2E2E2E),
-                      fontFamily: 'Careem',
-                      fontSize: 20,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 7,
-                  ),
-                  Text(
-                    'datadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadata',
-                    style: TextStyle(
-                      color: Color(0xFFA7A7A7),
-                      fontFamily: 'Careem',
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
+// End : Testmonials
+
+//Start:  Service Description
+
+          Container(
+            margin: EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  'Service Description',
+                  style: kServiceDescriptionTextStyle,
+                ),
+                SizedBox(
+                  height: 7,
+                ),
+                Text(
+                  'This is a dummy description. If you are looking for details, it is not the time because It is thursday and tommorrow I am travelling to Cairo!',
+                  style: kTestmonialContentTextStyle,
+                ),
+              ],
             ),
           ),
-          Expanded(
-            flex: 2,
-            child: Container(
-              margin: EdgeInsets.symmetric(
-                vertical: 10,
-                horizontal: 20,
-              ),
-              padding: EdgeInsets.all(7),
-              decoration: BoxDecoration(
-                color: Color(0xFF395991),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: TextButton(
-                onPressed: () {},
-                child: Text(
-                  'Apply for Service',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'Careem',
-                    fontSize: 24,
-                  ),
+// End: Servcie Description
+
+// Start : Apply for the Service
+
+          Container(
+            width: double.infinity,
+            child: FlatButton(
+              padding: EdgeInsets.symmetric(vertical: 40),
+              color: kBlueColor,
+              onPressed: () {
+                Navigator.pushNamed(context, NewOrder.id);
+                // Pass the data or have its index stored in the Manager, Handler
+              },
+              child: Text(
+                'Apply for Service',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
                 ),
               ),
             ),
-          ),
+          )
+// End : Apply for the Service
         ],
+      ),
+    );
+  }
+}
+
+class ServiceProvider extends StatelessWidget {
+  static const id = 'serviceProvider';
+  const ServiceProvider({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return PageTemplate(
+        childWidget: ServiceProviderContent(), title: 'Service Provider');
+  }
+}
+
+class ServicePictureFrame extends StatefulWidget {
+  const ServicePictureFrame({Key? key}) : super(key: key);
+
+  @override
+  _ServicePictureFrameState createState() => _ServicePictureFrameState();
+}
+
+class _ServicePictureFrameState extends State<ServicePictureFrame> {
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      elevation: 10,
+      child: Container(
+        width: 150,
+        height: 150,
+        margin: EdgeInsets.symmetric(vertical: 8, horizontal: 2),
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+          borderRadius: BorderRadius.all(Radius.circular(5)),
+          image: DecorationImage(
+            image: AssetImage(
+              'images/ana.jpg',
+            ),
+            fit: BoxFit.cover,
+          ),
+        ),
       ),
     );
   }
