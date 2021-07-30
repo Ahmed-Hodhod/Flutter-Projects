@@ -84,7 +84,7 @@ class WorkerCard extends StatelessWidget {
             child: Icon(
               loved ? kActiveFavouriteIcon : kInActiveFavouriteIcon,
               color: kOrangeColor,
-              size: 30,
+              size: 25,
             ),
           ),
         ),

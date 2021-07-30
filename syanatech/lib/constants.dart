@@ -38,7 +38,7 @@ const TextStyle kSeparatorTextStyle = TextStyle(
 const TextStyle kReviewsTextStyle = TextStyle(
   fontFamily: 'Careem',
   color: kGreyColor,
-  fontSize: 24,
+  fontSize: 20,
 );
 
 const TextStyle kRatingTextStyle = TextStyle(

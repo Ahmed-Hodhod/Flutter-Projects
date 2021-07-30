@@ -9,25 +9,28 @@ class ProfessionsBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment:
-          centeredRow ? MainAxisAlignment.center : MainAxisAlignment.start,
-      children: [
-        Text(
-          profession1.toString().split('.')[1],
-          style: kProfessionTextStyle,
-        ),
-        Text(
-          profession2 != Professions.None ? ' - ' : '',
-          style: kSeparatorTextStyle,
-        ),
-        Text(
-          profession2 != Professions.None
-              ? profession2.toString().split('.')[1]
-              : '',
-          style: kProfessionTextStyle,
-        ),
-      ],
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        mainAxisAlignment:
+            centeredRow ? MainAxisAlignment.center : MainAxisAlignment.start,
+        children: [
+          Text(
+            profession1.toString().split('.')[1],
+            style: kProfessionTextStyle,
+          ),
+          Text(
+            profession2 != Professions.None ? ' - ' : '',
+            style: kSeparatorTextStyle,
+          ),
+          Text(
+            profession2 != Professions.None
+                ? profession2.toString().split('.')[1]
+                : '',
+            style: kProfessionTextStyle,
+          ),
+        ],
+      ),
     );
   }
 }
